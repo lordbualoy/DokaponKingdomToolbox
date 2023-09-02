@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th v-for="(column, index) in columns" :key="index">
+                {{column.text}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(row, index1) in rows" :key="index1">
+            <td v-for="(column, index2) in columns" :key="index2">
+                <slot :name="`cell(${column.key})`" :data="row" :index="index1" />
+            </td>
+        </tr>
+    </tbody>
+</table>

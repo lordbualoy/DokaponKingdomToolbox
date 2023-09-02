@@ -1,0 +1,54 @@
+<div>
+    <section>
+        <h2>Stats Setup</h2>
+        <div class="stats-setup-body">
+            <CharacterInfo title="Player" :character="player" />
+            <CharacterInfo title="Opponent" :character="opponent" />
+        </div>
+    </section>
+    <section>
+        <h2>Battle</h2>
+        <div>
+            Attacker
+            <Dropdown v-model="playerIsAttacker" :options="attackerOptions" />
+        </div>
+        <Table :columns="columns" :rows="actions">
+            <template #cell(attackerAction)="{ data }">
+                {{ data.attackerAction }}
+            </template>
+            <template #cell(defenderAction)="{ data }">
+                {{ data.defenderAction }}
+            </template>
+            <template #cell(damageLow)="{ data }">
+                {{ data.damage.low }}
+            </template>
+            <template #cell(damageHigh)="{ data }">
+                {{ data.damage.high }}
+            </template>
+            <template #cell(hitChance)="{ data }">
+                {{ data.hitChance }}
+            </template>
+        </Table>
+    </section>
+    <section>
+        <h2>Weapon Change</h2>
+        <dl>
+            <dt>New Attack</dt>
+            <dd>
+                <input type="number" v-model="newWeapon.attack">
+            </dd>
+            <dt>New Has Weapon Proficiency Bonus</dt>
+            <dd>
+                <Checkbox v-model="newWeapon.hasWeaponProficiencyBonus" />
+            </dd>
+            <dt>Attack Break Even Point</dt>
+            <dd>
+                @{{ newWeaponBreakEven.attack }} Target's Defense
+            </dd>
+            <dt>Strike Break Even Point</dt>
+            <dd>
+                @{{ newWeaponBreakEven.strike }} Target's Defense + Magic + Speed
+            </dd>
+        </dl>
+    </section>
+</div>

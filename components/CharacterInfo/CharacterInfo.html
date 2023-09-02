@@ -1,0 +1,35 @@
+<div>
+    <h3>
+        {{ title }}
+    </h3>
+    <dl>
+        <dt>Attack</dt>
+        <dd>
+            <input type="number" v-model="character.attack">
+        </dd>
+        <dt>Defense</dt>
+        <dd>
+            <input type="number" v-model="character.defense">
+        </dd>
+        <dt>Magic</dt>
+        <dd>
+            <input type="number" v-model="character.magic">
+        </dd>
+        <dt>Speed</dt>
+        <dd>
+            <input type="number" v-model="character.speed">
+        </dd>
+        <dt>Weapon Proficiency Bonus</dt>
+        <dd>
+            <Checkbox v-model="character.hasWeaponProficiencyBonus" />
+        </dd>
+        <dt>Offensive Magic</dt>
+        <dd>
+            <Dropdown v-model="character.offensiveMagic" :options="offensiveMagicOptions" />
+        </dd>
+        <dt>Defensive Magic</dt>
+        <dd>
+            <Dropdown v-model="character.defensiveMagic" :options="defensiveMagicOptions" />
+        </dd>
+    </dl>
+</div>
